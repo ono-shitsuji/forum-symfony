@@ -3,7 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Se connecter</h1>
+    <h1>se connecter</h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -12,7 +12,7 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'mot de passe'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) 
+        {{ form_row(registrationForm.agreeTerms)
          }}
 
         <button type="submit" class="button">envoyer</button>

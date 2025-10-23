@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Topic{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau Topic</h1>
+
+    {{ include('topic/_form.html.twig') }}
+
+    <a href="{{ path('app_topic_index') }}">retour à la page précédente</a>
+{% endblock %}
