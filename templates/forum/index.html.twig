@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   {% if app.user %}
+    <div class="nether">
+    <h1>Forum symfony 🛸{{app.user.email}}, allons y ensemble </h1>
+    {% else %}
+    <h1>nous sommes enclin a parler</h1>
+    <p class="text-center">you are offline</p>
+    </div>
+    {%  endif  %}
+
+{% endblock %}
