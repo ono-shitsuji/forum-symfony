@@ -3,11 +3,12 @@
 {% block title %}Topic index{% endblock %}
 
 {% block body %}
+   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <p>. ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.</p>
     <h1>Page de topics</h1>
     
 
-    <table class="table">
+    <table class="array">
         <thead>
             <tr>
                 <th>Identifiants</th>
@@ -18,17 +19,18 @@
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tiny">
         {% for topic in topics %}
             <tr>
+            
                 <td>{{ topic.id }}</td>
                 <td>{{ topic.title }}</td>
                 <td>{{ topic.description }}</td>
                 <td>{{ topic.creationDate ? topic.creationDate|date('Y-m-d') : '' }}</td>
                 <td>{{ topic.modificationDate ? topic.modificationDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_topic_show', {'id': topic.id}) }}">afficher</a>
-                    <a href="{{ path('app_topic_edit', {'id': topic.id}) }}">modifier</a>
+                    <a href="{{ path('app_topic_show', {'id': topic.id}) }}"><button class="clipper">afficher</button></a>
+                    <a href="{{ path('app_topic_edit', {'id': topic.id}) }}"><button class="clipper">modifier</button></a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_topic_new') }}">créer un nouveau topic</a>
+    <a href="{{ path('app_topic_new') }}"><button>créer un nouveau topic</button></a>
 {% endblock %}

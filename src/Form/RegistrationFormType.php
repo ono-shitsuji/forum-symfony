@@ -6,8 +6,8 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -19,18 +19,20 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email' , EmailType::class, [
+            ->add('email', EmailType::class, [
                 'attr' => ['class' => 'form-control'],
             ])
-             ->add('pseudo', TextType::class, [
+            ->add('pseudo', TextType::class, [
                 'label' => 'Pseudo',
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('conditions générales', CheckboxType::class, [
+            ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => 'Accepter nos conditions',
+                'attr' => ['class' => 'm-3'],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'pour vous connecter veuiller agréer a nos termes générales.',
+                        'message' => 'Vous devez accepter nos conditions.',
                     ]),
                 ],
             ])
@@ -38,14 +40,15 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => 'Mot de passe',
+                'attr' => ['autocomplete' => 'new-password', 'class' => 'form-control'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'mot de passe non valide',
+                        'message' => 'Merci d\'entré un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'votre mot de passe doit avoir au minimum {{ limit }} chiffres et lettres',
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

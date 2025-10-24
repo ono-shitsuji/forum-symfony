@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}espace commentaires{% endblock %}
+
+{% block body %}
+    <h1>modifier le commentaire</h1>
+
+    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_comment_index') }}">retour page précédente</a>
+
+    {{ include('comment/_delete_form.html.twig') }}
+{% endblock %}
